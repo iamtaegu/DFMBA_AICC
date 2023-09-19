@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="89072825-7845-4a21-a34e-bf7cd00015bc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Frontend(react)/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Frontend(react)/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Frontend(react)/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Frontend(react)/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Frontend(react)/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Frontend(react)/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Frontend(react)/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Frontend(react)/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Frontend(react)/public/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +47,7 @@
       <updated>1694931077306</updated>
       <workItem from="1694931078523" duration="616000" />
       <workItem from="1694933826591" duration="600000" />
-      <workItem from="1695118921164" duration="1192000" />
+      <workItem from="1695118921164" duration="1506000" />
     </task>
     <servers />
   </component>
