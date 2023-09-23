@@ -4,11 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89072825-7845-4a21-a34e-bf7cd00015bc" name="Changes" comment="" />
+    <list default="true" id="89072825-7845-4a21-a34e-bf7cd00015bc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Application/Backend(server)/aiccConfigServer/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Backend(server)/aiccConfigServer/src/main/resources/config/eureka-auth-client.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Backend(server)/aiccConfigServer/src/main/resources/config/eureka-server.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Backend(server)/aiccEurekaAuthServer/src/main/java/com/dfmba/aicc/eurekaAuthClient/api/AuthApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Backend(server)/aiccEurekaAuthServer/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Backend(server)/aiccEurekaServer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -16,24 +32,65 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2VVpPVwtqtHkuJVNaFQVjEcYpP4" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/Desktop/DFMBA_AICC&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/user/Desktop/DFMBA_AICC/Application/Backend(server)/aiccConfigServer/src/main/resources/config",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Desktop\DFMBA_AICC\Application\Backend(server)\aiccConfigServer\src\main\resources\config" />
+      <recent name="C:\Users\user\Desktop\DFMBA_AICC\Application\Backend(server)\aiccConfigServer\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.EurekaAuthClientApplication">
+    <configuration name="AiccApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="config" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dfmba.aicc.AiccApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaAuthClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="eurekaAuthClient" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dfmba.aicc.eurekaAuthClient.EurekaAuthClientApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="eurekaServer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dfmba.aicc.eurekaServer.EurekaServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="start_win" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/Application/Frontend(react)/package.json" />
       <command value="run" />
@@ -62,6 +119,7 @@
       <workItem from="1694933826591" duration="600000" />
       <workItem from="1695118921164" duration="1950000" />
       <workItem from="1695122642000" duration="377000" />
+      <workItem from="1695454096733" duration="5522000" />
     </task>
     <servers />
   </component>
