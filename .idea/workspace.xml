@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89072825-7845-4a21-a34e-bf7cd00015bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Backend(server)/aiccConfigServer/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Backend(server)/aiccConfigServer/src/main/resources/config/eureka-auth-client.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Backend(server)/aiccConfigServer/src/main/resources/config/eureka-server.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Backend(server)/aiccEurekaAuthServer/src/main/java/com/dfmba/aicc/eurekaAuthClient/api/AuthApiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Backend(server)/aiccEurekaAuthServer/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Backend(server)/aiccEurekaServer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Frontend(react)/public/img/login.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Frontend(react)/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Frontend(react)/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Frontend(react)/src/component/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Frontend(react)/src/component/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Frontend(react)/src/component/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Frontend(react)/src/component/Header.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +57,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "0a645a20ea58838db638be10d56a54db",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -120,6 +118,7 @@
       <workItem from="1695118921164" duration="1950000" />
       <workItem from="1695122642000" duration="377000" />
       <workItem from="1695454096733" duration="5522000" />
+      <workItem from="1695531342558" duration="932000" />
     </task>
     <servers />
   </component>
