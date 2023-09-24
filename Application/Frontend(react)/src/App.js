@@ -2,7 +2,7 @@ import './App.css';
 import Header from "./component/Header";
 import AICCEditor from "./component/AICCEditor";
 import AICCList from "./component/AICCList";
-import { useState, useRef } from "react";
+import {useState, useRef, useReducer} from "react";
 
 const mockTodo = [
     {
@@ -25,39 +25,70 @@ const mockTodo = [
     },
 ]
 
+/**
+ * 상태(변화)코드 분리
+ * useState 같은 경우에는 컴포넌트 안에 선언 돼 있기 때문에 상태코드를 분리할 수 없음
+ * useReducer 훅에 의해서
+ *  dispatch 호출 > reducer 호출
+ */
+function reducer(state, action) {
+    switch (action.type) {
+        case "CREATE": {
+            return [action.newItem, ...state];
+        }
+        case "UPDATE": {
+            return state.map((it) =>
+                it.id === action.targetId ? {
+                    ...it,
+                    isDone: !it.isDone,
+                } : it
+            );
+        }
+        case "DELETE": {
+            return state.filter((it) => it.id !== action.targetId);
+        }
+        default:
+            return state;
+    }
+}
+
 function App() {
     /*
     * todo - mockTodo
+    * 컴포넌트에서 상태변화 코드 분리를 위한 리액트 훅 변경
+    *   useState -> useReducer
     */
-    const [todo, setTodo] = useState(mockTodo);
+
+    //const [todo, setTodo] = useState(mockTodo);
+    const [todo, dispatch] = useReducer(reducer, mockTodo);
 
     const idRef = useRef(3);
 
     const onCreate = (content) => {
-        const newItem = {
-            id: idRef.current,
-            content,
-            isDone: false,
-            createDate: new Date().getTime(),
-        };
-        /* newItem을 포함한 새 배열을 만들어 State 변수 todo 업데이트 */
-        setTodo([newItem, ...todo]);
+        dispatch({
+            type: "CREATE",
+            newItem: {
+                id: idRef.current,
+                content,
+                isDone: false,
+                createDate: new Date().getTime(),
+            },
+        });
         idRef.current += 1;
     };
 
     const onUpdate = (targetId) => {
-        setTodo(
-            todo.map((it) =>
-                it.id === targetId ? {...it, isDone: !it.isDone } : it
-            )
-        )
+        dispatch({
+            type: "UPDATE",
+            targetId,
+        });
     }
 
     const onDelete = (targetId) => {
-        /* 클릭된 요소를 제외 한 새 배열로 리스트 리렌더링 */
-        if (targetId > 2) {
-            setTodo(todo.filter((it)  => it.id !== targetId));
-        }
+        dispatch({
+          type: "DELETE",
+          targetId,
+        });
     };
 
     return (
