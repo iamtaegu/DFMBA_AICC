@@ -2,7 +2,7 @@ import './App.css';
 import Header from "./component/Header";
 import AICCEditor from "./component/AICCEditor";
 import AICCList from "./component/AICCList";
-import {useState, useRef, useReducer} from "react";
+import {useState, useRef, useReducer, useCallback} from "react";
 
 const mockTodo = [
     {
@@ -30,6 +30,8 @@ const mockTodo = [
  * useState 같은 경우에는 컴포넌트 안에 선언 돼 있기 때문에 상태코드를 분리할 수 없음
  * useReducer 훅에 의해서
  *  dispatch 호출 > reducer 호출
+ * 최적화
+ *  ㅇ useCallback: 불필요한 함수 재생성 방지
  */
 function reducer(state, action) {
     switch (action.type) {
@@ -77,19 +79,19 @@ function App() {
         idRef.current += 1;
     };
 
-    const onUpdate = (targetId) => {
+    const onUpdate = useCallback((targetId) => {
         dispatch({
             type: "UPDATE",
             targetId,
         });
-    }
+    }, []);
 
-    const onDelete = (targetId) => {
+    const onDelete = useCallback((targetId) => {
         dispatch({
           type: "DELETE",
           targetId,
         });
-    };
+    }, []);
 
     return (
     <div className="App">

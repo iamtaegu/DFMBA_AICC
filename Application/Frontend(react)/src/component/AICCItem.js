@@ -1,5 +1,10 @@
+import React from "react";
 import "./AICCItem.css";
 
+/**
+ * 등록된 아이템 개수만큼 렌더링 발생
+ *  ㅇ 등록된 아이템은 체크박스에 의한 토글 발생이 아니면 리렌더링 될 필요 없음
+ */
 const AICCItem = ({ id, content, isDone, createDate, onUpdate, onDelete }) => {
     const onChangeCheckbox = () => {
         onUpdate(id);
@@ -22,4 +27,4 @@ const AICCItem = ({ id, content, isDone, createDate, onUpdate, onDelete }) => {
         </div>
     );
 };
-export default AICCItem;
+export default React.memo(AICCItem);
