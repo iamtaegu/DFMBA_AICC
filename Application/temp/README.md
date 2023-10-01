@@ -27,5 +27,12 @@
     * Button, Header, Editor 컴포넌트
 
 ### 페이지 구현 
+    * Home, Diary (완료)
+    * Edit, New (예정)
+
+### 커스텀 훅(사용자 정의 훅)
+    * useState, useEffect와 같은 훅을 직접 만들어 사용하는 것을 뜻함
+    *
+
 
 `
