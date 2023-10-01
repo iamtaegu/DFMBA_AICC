@@ -24,7 +24,8 @@
     * 쿼리 스트링
 
 ### 공통 컴포넌트 
-    * Button, Header 컴포넌트
-    * Editor 컴포넌트
+    * Button, Header, Editor 컴포넌트
+
+### 페이지 구현 
 
 `
