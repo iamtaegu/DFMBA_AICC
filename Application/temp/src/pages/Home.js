@@ -16,14 +16,12 @@ const Home = () => {
 
     useEffect(() => {
        if (data.length >= 1) {
-           // 아래 형태로 기간조회 기능 구현 가능 (2023.10.01:HH:MM:SS ~ 2023.11.00:23:59:59)
-           /*const  {beginTimeStamp, endTimeStamp} = getMonthRangeByDate(pivotDate);
+           const  {beginTimeStamp, endTimeStamp} = getMonthRangeByDate(pivotDate);
            setFilteredData(
                data.filter(
                    (it) => beginTimeStamp <= it.date && it.date <= endTimeStamp
                )
-           );*/
-           setFilteredData(data);
+           );
        } else {
            setFilteredData([]);
        }

@@ -50,14 +50,14 @@ const Editor = ({ initData, onSubmit }) => {
     return (
         <div className="Editor">
             <div className="editor_section">
-                <h4>오늘의 날짜</h4>
+                <h4>문의 날짜</h4>
                 <div className="input_wrapper">
                     <input type="date" value={state.date}
                            onChange={handleChangeDate} />
                 </div>
             </div>
             <div className="editor_section">
-                <h4>오늘의 감정</h4>
+                <h4>만족도</h4>
                 <div className="input_wrapper emotion_list_wrapper">
                     {emotionList.map((it) =>(
                         <EmotionItem
@@ -70,7 +70,7 @@ const Editor = ({ initData, onSubmit }) => {
                 </div>
             </div>
             <div className="editor_section">
-                <h4>오늘의 일기</h4>
+                <h4>문의 내용</h4>
                 <div className="input_wrapper">
                     <textarea
                         placeholder="contents"
