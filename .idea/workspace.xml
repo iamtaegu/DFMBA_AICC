@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89072825-7845-4a21-a34e-bf7cd00015bc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Application/temp/src/components/EmotionItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/temp/src/components/EmotionItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/temp/src/components/DiaryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/temp/src/components/DiaryList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/CALL GPT_v1.pptx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,13 +36,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/user/Desktop/DFMBA_AICC",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "0a645a20ea58838db638be10d56a54db",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\user\Desktop\DFMBA_AICC\Application\Backend(server)\aiccConfigServer\src\main\resources\config" />
       <recent name="C:\Users\user\Desktop\DFMBA_AICC\Application\Backend(server)\aiccConfigServer\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start_win">
     <configuration name="AiccApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="config" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.dfmba.aicc.AiccApplication" />
@@ -86,6 +102,7 @@
       <workItem from="1695122642000" duration="377000" />
       <workItem from="1695454096733" duration="5522000" />
       <workItem from="1695531342558" duration="1192000" />
+      <workItem from="1696322711391" duration="738000" />
     </task>
     <servers />
   </component>

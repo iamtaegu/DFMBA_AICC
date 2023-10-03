@@ -51,7 +51,7 @@ const DiaryList = ({ data }) => {
               <div className="right_col">
                   <Button
                       type={"positive"}
-                      text={"새 글 쓰기"}
+                      text={"새로운 문의 작성하기"}
                       onClick={onClickNew}
                   />
               </div>
