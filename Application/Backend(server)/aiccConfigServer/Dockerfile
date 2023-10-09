@@ -10,6 +10,7 @@ LABEL maintainer="ohtaegeon <gmdals45@gmail.com>"
 ARG JAR_FILE
 
 # Add the application's jar to the container
+# JAR 파일을 이미지의 파일 시스템에 app.jar로 복사
 COPY ${JAR_FILE} app.jar
 
 #unpackage jar file
@@ -29,4 +30,6 @@ COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
 #execute the application
-ENTRYPOINT ["java","-cp","app:app/lib/*","com.dfmba.aicc.AiccApplication"]
+#이미지의 서비스 애플리케이션을 실행 대상으로 지정
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+#ENTRYPOINT ["java","-cp","app:app/lib/*","com.dfmba.aicc.AiccApplication"]
