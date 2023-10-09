@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89072825-7845-4a21-a34e-bf7cd00015bc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/temp/src/components/DiaryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/temp/src/components/DiaryList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/CALL GPT_v1.pptx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +99,7 @@
       <workItem from="1695122642000" duration="377000" />
       <workItem from="1695454096733" duration="5522000" />
       <workItem from="1695531342558" duration="1192000" />
-      <workItem from="1696322711391" duration="738000" />
+      <workItem from="1696322711391" duration="1299000" />
     </task>
     <servers />
   </component>
