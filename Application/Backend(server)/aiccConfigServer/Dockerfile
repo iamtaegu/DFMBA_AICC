@@ -31,5 +31,4 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
 #execute the application
 #이미지의 서비스 애플리케이션을 실행 대상으로 지정
-ENTRYPOINT ["java", "-jar", "/app.jar"]
-#ENTRYPOINT ["java","-cp","app:app/lib/*","com.dfmba.aicc.AiccApplication"]
+ENTRYPOINT ["java","-cp","app:app/lib/*","com.dfmba.aicc.AiccApplication"]
