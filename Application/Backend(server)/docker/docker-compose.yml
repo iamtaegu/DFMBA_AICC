@@ -29,6 +29,27 @@ services:
         aliases:
           - "eureka-auth-client"
 
+  database:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB:       "aicc"
+    volumes:
+        - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
+        - ./data.sql:/docker-entrypoint-initdb.d/2-data.sql
+    networks:
+      backend:
+        aliases:
+          - "database"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      
 networks:
   backend:
     driver: bridge
