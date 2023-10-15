@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.dfmba.aicc</groupId>
-	<artifactId>eurekaAuthClient</artifactId>
+	<artifactId>eureka-auth-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>eurekaAuthClient</name>
 	<description>Eureka Auth Client for AICC Project</description>
