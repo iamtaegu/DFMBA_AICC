@@ -1,0 +1,34 @@
+version: '1.0'
+services:
+  configserver:
+    image: aicc/config:0.0.1-SNAPSHOT
+    ports:
+      - "8888:8888"
+    networks:
+      - backend
+    aliases:
+      - "configserver"
+  eurekaserver:
+    image: aicc/eureka-server:0.0.1-SNAPSHOT
+    ports:
+      - "8761:8761"
+    depends_on:
+      - database
+      - configserver
+    networks:
+      - backend
+    aliases:
+      - "eurekaserver"
+  eureka-auth-client:
+    image: aicc/eureka-auth-client:0.0.1-SNAPSHOT
+    depends_on:
+      - database
+      - configserver
+    networks:
+      - backend
+    aliases:
+      - "eureka-auth-client"
+
+networks:
+  backend:
+    driver: bridge
