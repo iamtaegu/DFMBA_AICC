@@ -28,10 +28,6 @@ services:
       backend:
         aliases:
           - "eureka-auth-client"
-    networks:
-      backend:
-        aliases:
-          - "eureka-auth-client"
 
 networks:
   backend:
