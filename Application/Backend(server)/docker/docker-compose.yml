@@ -5,9 +5,9 @@ services:
     ports:
       - "8888:8888"
     networks:
-      - backend
-    aliases:
-      - "configserver"
+      backend:
+        aliases:
+          - "configserver"
   eurekaserver:
     image: aicc/eureka-server:0.0.1-SNAPSHOT
     ports:
@@ -24,6 +24,10 @@ services:
     depends_on:
       - database
       - configserver
+    networks:
+      backend:
+        aliases:
+          - "eureka-auth-client"
     networks:
       backend:
         aliases:
