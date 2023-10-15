@@ -23,9 +23,9 @@
     </properties>
 
     <modules>
-        <module>config</module>
-        <module>eureka-server</module>
-        <module>eureka-auth-client</module>
+        <module>aiccConfigServer</module>
+        <module>aiccEurekaServer</module>
+        <module>aiccEurekaAuthServer</module>
     </modules>
 
     <build>
