@@ -16,18 +16,18 @@ services:
       - database
       - configserver
     networks:
-      - backend
-    aliases:
-      - "eurekaserver"
+      backend:
+        aliases:
+          - "eurekaserver"
   eureka-auth-client:
     image: aicc/eureka-auth-client:0.0.1-SNAPSHOT
     depends_on:
       - database
       - configserver
     networks:
-      - backend
-    aliases:
-      - "eureka-auth-client"
+      backend:
+        aliases:
+          - "eureka-auth-client"
 
 networks:
   backend:
