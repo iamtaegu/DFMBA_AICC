@@ -2,7 +2,8 @@ spring:
   application:
     name: eureka-server
   config:
-    import: "optional:configserver:http://configserver:8888"
+#    import: "optional:configserver:http://configserver:8888"
+    import: "optional:configserver:http://172.31.36.224:8888"
   cloud:
     loadbalancer:
       ribbon:
