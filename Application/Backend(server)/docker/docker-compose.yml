@@ -19,20 +19,20 @@ services:
       backend:
         aliases:
           - "eurekaserver"
-  eureka-auth:
-    image: aicc/eureka-auth-client:0.0.1-SNAPSHOT
-    environment:
+#  eureka-auth:
+#    image: aicc/eureka-auth-client:0.0.1-SNAPSHOT
+#    environment:
 #      PROFILE: "dev"
-      CONFIGSERVER_URI: "http://configserver:8888"
-      CONFIGSERVER_PORT: "8888"
-    depends_on:
+#      CONFIGSERVER_URI: "http://configserver:8888"
+#      CONFIGSERVER_PORT: "8888"
+#    depends_on:
 #      - database
-      - configserver
-      - eurekaserver
-    networks:
-      backend:
-        aliases:
-          - "eurekaauth"
+#      - configserver
+#      - eurekaserver
+#    networks:
+#      backend:
+#        aliases:
+#          - "eurekaauth"
 
 #  database:
 #    image: postgres:latest
