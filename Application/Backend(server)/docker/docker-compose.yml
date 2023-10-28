@@ -25,10 +25,6 @@ services:
 #      - database
       - configserver
       - eurekaserver
-    networks:
-      backend:
-        aliases:
-          - "eureka-auth-client"
 
 #  database:
 #    image: postgres:latest
