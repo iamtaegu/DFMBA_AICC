@@ -19,16 +19,16 @@ services:
       backend:
         aliases:
           - "eurekaserver"
-#  eureka-auth-client:
-#    image: aicc/eureka-auth-client:0.0.1-SNAPSHOT
-#    depends_on:
+  eureka-auth-client:
+    image: aicc/eureka-auth-client:0.0.1-SNAPSHOT
+    depends_on:
 #      - database
-#      - configserver
-#      - eurekaserver
-#    networks:
-#      backend:
-#        aliases:
-#          - "eureka-auth-client"
+      - configserver
+      - eurekaserver
+    networks:
+      backend:
+        aliases:
+          - "eureka-auth-client"
 
 #  database:
 #    image: postgres:latest
