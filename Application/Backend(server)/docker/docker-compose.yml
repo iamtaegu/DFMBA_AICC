@@ -24,6 +24,7 @@ services:
     depends_on:
       - database
       - configserver
+      - eurekaserver
     networks:
       backend:
         aliases:
