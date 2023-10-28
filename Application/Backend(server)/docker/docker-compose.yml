@@ -21,6 +21,10 @@ services:
           - "eurekaserver"
   eureka-auth:
     image: aicc/eureka-auth-client:0.0.1-SNAPSHOT
+    environment:
+#      PROFILE: "dev"
+      CONFIGSERVER_URI: "http://configserver:8888"
+      CONFIGSERVER_PORT: "8888"
     depends_on:
 #      - database
       - configserver
