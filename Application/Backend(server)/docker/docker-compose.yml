@@ -13,7 +13,7 @@ services:
     ports:
       - "8761:8761"
     depends_on:
-      - database
+#      - database
       - configserver
     networks:
       backend:
