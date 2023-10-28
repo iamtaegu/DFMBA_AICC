@@ -19,7 +19,7 @@ services:
       backend:
         aliases:
           - "eurekaserver"
-  eureka-auth-client:
+  eureka-auth:
     image: aicc/eureka-auth-client:0.0.1-SNAPSHOT
     depends_on:
 #      - database

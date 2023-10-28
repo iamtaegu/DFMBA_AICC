@@ -1,6 +1,6 @@
 spring:
   application:
-    name: eureka-auth-client
+    name: eureka-auth
   config:
     #import: "optional:configserver:http://configserver:8888"
     import: "optional:configserver:http://configserver:8888"
