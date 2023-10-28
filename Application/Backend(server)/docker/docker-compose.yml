@@ -14,7 +14,8 @@ services:
       - "8761:8761"
     depends_on:
 #      - database
-      - configserver
+      configserver:
+        condition: service_started
     networks:
       backend:
         aliases:
