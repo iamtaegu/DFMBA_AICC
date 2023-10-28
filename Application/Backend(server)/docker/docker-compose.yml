@@ -25,6 +25,8 @@ services:
 #      - database
       - configserver
       - eurekaserver
+    networks:
+      - backend
 
 #  database:
 #    image: postgres:latest
