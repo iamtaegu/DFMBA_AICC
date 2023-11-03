@@ -38,3 +38,7 @@ https://www.helpshift.com/?utm_feeditemid&utm_device=c&utm_term=helpshift&utm_so
    2. disown %1
    3. exit
 
+## 아이디어 피칭
+
+  * '일자 + 종목 + 선호도'(optional) 반영된 뉴스 목록 제시 (수업내용반영)
+    1. 뉴스 상세보기 클릭시 요약 내용 (수업내용반영)
