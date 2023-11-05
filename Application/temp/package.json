@@ -15,6 +15,7 @@
   "scripts": {
     "start_win": "set PORT=8080 && react-scripts start",
     "start_linux": "export PORT=8080 && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/DFMBA_AICC.iml" filepath="$PROJECT_DIR$/.idea/DFMBA_AICC.iml" />
       <module fileurl="file://$PROJECT_DIR$/Application/Backend(server)/aiccConfigServer/config.iml" filepath="$PROJECT_DIR$/Application/Backend(server)/aiccConfigServer/config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Application/Backend(server)/aiccEurekaAuthServer/eureka-auth-client.iml" filepath="$PROJECT_DIR$/Application/Backend(server)/aiccEurekaAuthServer/eureka-auth-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Application/Backend(server)/aiccEurekaServer/eureka-server.iml" filepath="$PROJECT_DIR$/Application/Backend(server)/aiccEurekaServer/eureka-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/Application/Backend(server)/aiccEurekaAuthServer/eurekaAuthClient.iml" filepath="$PROJECT_DIR$/Application/Backend(server)/aiccEurekaAuthServer/eurekaAuthClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/Application/Backend(server)/aiccEurekaServer/eurekaServer.iml" filepath="$PROJECT_DIR$/Application/Backend(server)/aiccEurekaServer/eurekaServer.iml" />
     </modules>

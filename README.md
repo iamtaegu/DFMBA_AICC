@@ -42,3 +42,27 @@ https://www.helpshift.com/?utm_feeditemid&utm_device=c&utm_term=helpshift&utm_so
 
   * '일자 + 종목 + 선호도'(optional) 반영된 뉴스 목록 제시 (수업내용반영)
     1. 뉴스 상세보기 클릭시 요약 내용 (수업내용반영)
+
+## Backend
+
+ * URL
+   * https://7yqpg0pc1k.execute-api.ap-northeast-2.amazonaws.com/dev/hello
+   * https://7yqpg0pc1k.execute-api.ap-northeast-2.amazonaws.com/dev/news_trends
+ * nginx
+   * /etc/nginx/nginx.conf
+       server {
+        listen       80 default_server;
+        listen       [::]:80 default_server;
+        server_name  localhost;
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+                proxy_pass http://localhost:8080;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+        }
+

@@ -7,13 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="config" />
-        <module name="eurekaServer" />
         <module name="eurekaAuthClient" />
+        <module name="eurekaServer" />
+        <module name="eureka-server" />
+        <module name="config" />
+        <module name="eureka-auth-client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="config" target="17" />
+      <module name="eureka-auth-client" target="17" />
+      <module name="eureka-server" target="17" />
       <module name="eurekaAuthClient" target="17" />
       <module name="eurekaServer" target="17" />
     </bytecodeTargetLevel>
@@ -21,6 +25,8 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="config" options="-parameters" />
+      <module name="eureka-auth-client" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
       <module name="eurekaAuthClient" options="-parameters" />
       <module name="eurekaServer" options="-parameters" />
     </option>
