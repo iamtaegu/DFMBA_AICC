@@ -22,7 +22,7 @@ const mockData = [
         id: "mock2",
         date: new Date().getTime() - 2,
         content: "mock2",
-        emotionId: 2,
+        emotionId: 5,
     },
     {
         id: "mock3",
