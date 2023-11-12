@@ -8,30 +8,6 @@ import Diary from "./pages/Diary.";
 import Edit from "./pages/Edit";
 import React, {useEffect, useReducer, useRef, useState} from "react";
 
-/**
- * 컴포넌트 라이프 사이클과 무관하기 때문에 외부에 선언
- */
-const mockData = [
-    {
-        id: "mock1",
-        date: new Date().getTime() - 1,
-        content: "mock1",
-        emotionId: 1,
-    },
-    {
-        id: "mock2",
-        date: new Date().getTime() - 2,
-        content: "mock2",
-        emotionId: 5,
-    },
-    {
-        id: "mock3",
-        date: new Date().getTime() - 3,
-        content: "mock3",
-        emotionId: 3,
-    },
-];
-
 function reducer(state, action) {
     switch (action.type) {
         case "INIT": {
@@ -63,12 +39,12 @@ function App() {
   useEffect(() => {
       dispatch({
          type: "INIT",
-         data: mockData,
+         data: [],
       });
       setIsDataLoaded(true)
   }, []);
 
-  const onCreate = (date, content, emotionId) => {
+  const onCreate = (date, content, emotionId, fetchDataList) => {
       dispatch({
           type: "CREATE",
           data: {
@@ -76,6 +52,7 @@ function App() {
               date: new Date(date).getTime(),
               content,
               emotionId,
+              fetchDataList,
           },
       });
       idRef.current += 1;

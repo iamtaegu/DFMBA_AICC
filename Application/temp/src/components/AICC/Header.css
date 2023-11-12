@@ -1,0 +1,26 @@
+.Header h1 {
+    margin-bottom: 0px;
+    color: #808080;
+}
+
+/* 이미지와 텍스트를 가로로 나란히 표시하기 위한 스타일 */
+.image-with-text {
+    display: flex; /* Flexbox를 사용하여 가로로 배치 */
+    align-items: center; /* 요소를 세로로 중앙 정렬 */
+}
+
+/* 텍스트의 스타일 (선택적으로 수정 가능) */
+h3 {
+    margin-right: 370px; /* 텍스트와 이미지 사이의 간격 설정 */
+}
+
+/* 이미지의 스타일 (선택적으로 수정 가능) */
+img {
+    max-width: 100px; /* 이미지의 최대 너비 설정 */
+    height: auto; /* 이미지 높이 자동 조정 */
+}
+
+/* 이미지 컨테이너의 스타일 */
+.image-container {
+    text-align: right; /* 이미지를 오른쪽으로 정렬 */
+}
