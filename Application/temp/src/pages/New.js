@@ -6,19 +6,7 @@ import {useContext, useState} from "react";
 import {DiaryDispatchContext} from "../App";
 
 import axios from 'axios';
-
-function fnGetSentiment(id) {
-    switch (id) {
-        case 1:
-            return "positive";
-        case 3:
-            return "neutral";
-        case 5:
-            return "negative";
-        default:
-            return "";
-    }
-}
+import {getSentiment} from "../util";
 
 const New = () => {
     const navigate = useNavigate();
@@ -37,7 +25,7 @@ const New = () => {
          */
         let fetchData = null;
         let param = '?title=' + data.content;
-        let param_sentiment = fnGetSentiment(data.emotionId);
+        let param_sentiment = getSentiment(data.emotionId);
         param += param_sentiment.length > 0 ? "&sentiment=" + param_sentiment : "";
 
         try {

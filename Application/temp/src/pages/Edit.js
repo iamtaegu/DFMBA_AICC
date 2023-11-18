@@ -6,6 +6,9 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import Editor from "../components/Editor";
 
+import axios from 'axios';
+import {getSentiment} from "../util";
+
 const Edit = () => {
     const { id } = useParams();
     const data = useDiary(id);
@@ -22,10 +25,24 @@ const Edit = () => {
         }
     };
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
+
         if (window.confirm("정말 수정할까요 ? ")) {
+            let fetchData = null;
+            let param = '?title=' + data.content;
+            let param_sentiment = getSentiment(data.emotionId);
+            param += param_sentiment.length > 0 ? "&sentiment=" + param_sentiment : "";
+
+            try {
+                const resp = await axios.get('https://7yqpg0pc1k.execute-api.ap-northeast-2.amazonaws.com/dev/news_searchs' + param);
+                fetchData = typeof resp.data === 'string' ? JSON.parse(resp.data) : resp.data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+            let fetchDataList = fetchData.message.hits.hits;
+
             const { date, content, emotionId } = data;
-            onUpdate(id, date, content, emotionId);
+            onUpdate(id, date, content, emotionId, fetchDataList);
             navigate("/", { replace:true });
         }
     };

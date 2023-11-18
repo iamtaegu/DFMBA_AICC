@@ -80,3 +80,16 @@ export const getMonthRangeByDate = (date) => {
     ).getTime();
     return { beginTimeStamp, endTimeStamp };
 };
+
+export const getSentiment = (emotionId) => {
+    switch (emotionId) {
+        case 1:
+            return "positive";
+        case 3:
+            return "neutral";
+        case 5:
+            return "negative";
+        default:
+            return "";
+    }
+};

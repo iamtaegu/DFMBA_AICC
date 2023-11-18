@@ -57,7 +57,7 @@ function App() {
       });
       idRef.current += 1;
   };
-  const onUpdate = (targetId, date, content, emotionId) => {
+  const onUpdate = (targetId, date, content, emotionId, fetchDataList) => {
         dispatch({
             type: "UPDATE",
             data: {
@@ -65,6 +65,7 @@ function App() {
                 date: new Date(date).getTime(),
                 content,
                 emotionId,
+                fetchDataList,
             },
         });
   };
