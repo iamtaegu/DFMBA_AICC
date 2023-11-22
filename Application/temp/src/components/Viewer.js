@@ -35,7 +35,7 @@ const Viewer = ({ content, emotionId, fetchDataList }) => {
     const idRef = useRef(3);
 
     const onClick = (id) => {
-        let idBody = fetchDataList.find((it) => it._source.id === id)._source.body;
+        let idBody = fetchDataList.find((it) => it._source.id === id)._source.summary;
         setBodyContent(idBody);
     }
 
