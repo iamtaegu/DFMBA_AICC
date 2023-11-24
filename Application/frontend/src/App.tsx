@@ -1,38 +1,29 @@
 import './App.css';
 
+import React, {useEffect, useReducer, useRef, useState} from "react";
 import {Routes, Route, Link} from "react-router-dom";
 
 import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary.";
 import Edit from "./pages/Edit";
-import React, {useEffect, useReducer, useRef, useState} from "react";
 
-/**
- * 컴포넌트 라이프 사이클과 무관하기 때문에 외부에 선언
- */
-const mockData = [
-    {
-        id: "mock1",
-        date: new Date().getTime() - 1,
-        content: "mock1",
-        emotionId: 1,
-    },
-    {
-        id: "mock2",
-        date: new Date().getTime() - 2,
-        content: "mock2",
-        emotionId: 5,
-    },
-    {
-        id: "mock3",
-        date: new Date().getTime() - 3,
-        content: "mock3",
-        emotionId: 3,
-    },
-];
+interface DiaryEntry {
+    id: number;
+    date: number;
+    content: string;
+    emotionId: number;
+    fetchDataList: any; // You might want to replace this with the actual type
+};
 
-function reducer(state, action) {
+type DiaryAction =
+    | { type: "INIT"; data: DiaryEntry[] }
+    | { type: "CREATE"; data: DiaryEntry }
+    | { type: "UPDATE"; data: DiaryEntry }
+    | { type: "DELETE"; targetId: number };
+
+
+function reducer(state: DiaryEntry[], action: DiaryAction) {
     switch (action.type) {
         case "INIT": {
             return action.data;
@@ -63,12 +54,12 @@ function App() {
   useEffect(() => {
       dispatch({
          type: "INIT",
-         data: mockData,
+         data: [],
       });
       setIsDataLoaded(true)
   }, []);
 
-  const onCreate = (date, content, emotionId) => {
+  const onCreate = (date: Date, content: string, emotionId: number, fetchDataList: any) => {
       dispatch({
           type: "CREATE",
           data: {
@@ -76,11 +67,12 @@ function App() {
               date: new Date(date).getTime(),
               content,
               emotionId,
+              fetchDataList,
           },
       });
       idRef.current += 1;
   };
-  const onUpdate = (targetId, date, content, emotionId) => {
+  const onUpdate = (targetId: number, date: Date, content: string, emotionId: number, fetchDataList: any) => {
         dispatch({
             type: "UPDATE",
             data: {
@@ -88,10 +80,11 @@ function App() {
                 date: new Date(date).getTime(),
                 content,
                 emotionId,
+                fetchDataList,
             },
         });
   };
-  const onDelete = (targetId) => {
+  const onDelete = (targetId: number) => {
       dispatch({
           type: "DELETE",
           targetId,
@@ -130,6 +123,16 @@ function App() {
  *  2. Props로 일기 State 값을 전달
  *  3. DiaryStateContext.Provider 하위 컴포넌트는 Props Drilling 없이 useContext를 이용해 일기 State 사용이 가능
  */
-export const DiaryStateContext = React.createContext();
-export const DiaryDispatchContext = React.createContext();
+export const DiaryStateContext = React.createContext<DiaryEntry[]>([]);
+export const DiaryDispatchContext = React.createContext({
+    onCreate: (date: Date, content: string, emotionId: number, fetchDataList: any) => {},
+    onUpdate: (
+        targetId: number,
+        date: Date,
+        content: string,
+        emotionId: number,
+        fetchDataList: any
+    ) => {},
+    onDelete: (targetId: number) => {},
+});
 export default App;

@@ -4,7 +4,13 @@ import emotion3 from "./img/emotion3.png"
 import emotion4 from "./img/emotion4.png"
 import emotion5 from "./img/emotion5.png"
 
-export const getEmotionImgById = (emotionId) => {
+interface Emotion {
+    id: number;
+    name: string;
+    img: string | null;
+}
+
+export const getEmotionImgById = (emotionId: number): string | null => {
     const targetEmotionId = String(emotionId);
     switch (targetEmotionId) {
         case "1":
@@ -27,20 +33,20 @@ export const getEmotionImgById = (emotionId) => {
  * @param targetDate
  * @returns {`${number}-${number}-${number}`} yyyy-mm-dd format
  */
-export const getFormattedDate = (targetDate) => {
-  let year = targetDate.getFullYear();
-  let month = targetDate.getMonth() + 1;
-  let date = targetDate.getDate();
-  if (month < 10) {
-      month = `0${month}`;
-  }
-  if (date < 10) {
-      date = `0${date}`;
-  }
-  return `${year}-${month}-${date}`;
+export const getFormattedDate = (targetDate: Date): string => {
+    let year = targetDate.getFullYear().toString();
+    let month = (targetDate.getMonth() + 1).toString();
+    let date = (targetDate.getDate()).toString();
+    if (month < "10") {
+        month = `0${month}`;
+    }
+    if (date < "10") {
+        date = `0${date}`;
+    }
+    return `${year}-${month}-${date}`;
 };
 
-export const emotionList = [
+export const emotionList: Emotion[] = [
     {
         id: 1,
         name: "긍정",
@@ -68,7 +74,7 @@ export const emotionList = [
     },
 ]
 
-export const getMonthRangeByDate = (date) => {
+export const getMonthRangeByDate = (date: Date): { beginTimeStamp: number; endTimeStamp: number } => {
     const beginTimeStamp = new Date(date.getFullYear(), date.getMonth(), 1).getTime();
     const endTimeStamp = new Date(
         date.getFullYear(),
@@ -79,4 +85,17 @@ export const getMonthRangeByDate = (date) => {
         59
     ).getTime();
     return { beginTimeStamp, endTimeStamp };
+};
+
+export const getSentiment = (emotionId: number): string => {
+    switch (emotionId) {
+        case 1:
+            return "positive";
+        case 3:
+            return "neutral";
+        case 5:
+            return "negative";
+        default:
+            return "";
+    }
 };
