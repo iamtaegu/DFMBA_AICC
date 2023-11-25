@@ -1,6 +1,10 @@
-spring:
-  application:
-    name: eureka-auth
-  config:
+#spring:
+  #application:
+    #name: eureka-auth
+  #config:
     #import: "optional:configserver:http://configserver:8888"
-    import: "optional:configserver:http://configserver:8888"
+    #import: "optional:configserver:http://configserver:8888"
+
+spring:
+  profiles:
+    include: oauth
