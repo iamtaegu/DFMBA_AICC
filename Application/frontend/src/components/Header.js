@@ -1,6 +1,7 @@
 import "./Header.css";
+import LoginIcon from "@mui/icons-material/Login";
 
-const Header = ({ title, leftChild, rightChild }) => {
+const Header = ({ title, leftChild, rightChild, onLogin }) => {
     return (
         <div className="Header">
             <div className="header_left">{leftChild}</div>
