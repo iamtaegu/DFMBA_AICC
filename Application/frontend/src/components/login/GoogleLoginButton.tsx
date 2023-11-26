@@ -11,7 +11,6 @@ const GoogleLoginButton = ({onLogin}) => {
             <GoogleOAuthProvider clientId={GOOGLE_ID}>
                 <GoogleLogin
                     onSuccess={(res) => {
-                        console.log(res.credential);
                         onLogin(res.credential);
                     }}
                 />

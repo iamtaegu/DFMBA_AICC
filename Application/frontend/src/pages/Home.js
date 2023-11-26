@@ -1,14 +1,17 @@
 import Button from "../components/Button";
 import Header from "../components/Header";
 import {useContext, useEffect, useState} from "react";
-import {DiaryStateContext} from "../App";
-import {getMonthRangeByDate} from "../util";
+import {DiaryDispatchContext, DiaryStateContext} from "../App";
+import {getMonthRangeByDate, getUserHistory} from "../util";
 import DiaryList from "../components/DiaryList";
 import GoogleLoginButton from "../components/login/GoogleLoginButton";
 import { jwtDecode } from "jwt-decode";
 
 const Home = () => {
+
     const data = useContext(DiaryStateContext);
+    const { onCreate } = useContext(DiaryDispatchContext);
+
     const [filteredData, setFilteredData] = useState([]);
     const [pivotDate, setPivotDate] = useState(new Date());
 
@@ -36,11 +39,25 @@ const Home = () => {
     };
 
     const [showGoogleLogin, setShowGoogleLogin] = useState(true);
-    const onLogin = (credential) => {
+    const onLogin = async (credential) => {
         const decoded = jwtDecode(credential);
-        console.log(decoded.email);
+
         setShowGoogleLogin(false);
-    }
+
+        // onCreate(date, content, emotionId, fetchDataList);
+
+        try {
+            var userHistory = await getUserHistory(decoded.email);
+
+            userHistory.forEach( (doc) => {
+                console.log(`${doc.id} => ${doc.data()['content']}`);
+                onCreate(doc.data().date, doc.data().content, doc.data().sentiment, '');
+            });
+
+        } catch (error) {
+            console.error("Error getting user history: ", error);
+        }
+    };
 
     return (
         <div>

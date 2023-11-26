@@ -8,13 +8,7 @@ import New from "./pages/New";
 import Diary from "./pages/Diary.";
 import Edit from "./pages/Edit";
 
-interface DiaryEntry {
-    id: number;
-    date: number;
-    content: string;
-    emotionId: number;
-    fetchDataList: any; // You might want to replace this with the actual type
-};
+import { DiaryEntry } from "./util";
 
 type DiaryAction =
     | { type: "INIT"; data: DiaryEntry[] }
@@ -60,6 +54,9 @@ function App() {
   }, []);
 
   const onCreate = (date: Date, content: string, emotionId: number, fetchDataList: any) => {
+
+      console.log (date);
+
       dispatch({
           type: "CREATE",
           data: {

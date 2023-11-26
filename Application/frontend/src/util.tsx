@@ -4,6 +4,20 @@ import emotion3 from "./img/emotion3.png"
 import emotion4 from "./img/emotion4.png"
 import emotion5 from "./img/emotion5.png"
 
+import { collection, getDocs } from "firebase/firestore";
+import { firestore } from "./firebase-config.js";
+
+import {DiaryDispatchContext} from "./App";
+import {useContext} from "react";
+
+export interface DiaryEntry {
+    id: number;
+    date: number;
+    content: string;
+    emotionId: number;
+    fetchDataList: any;
+};
+
 interface Emotion {
     id: number;
     name: string;
@@ -99,3 +113,21 @@ export const getSentiment = (emotionId: number): string => {
             return "";
     }
 };
+
+export const getUserHistory = async (mail: string) => {
+    const querySnapshot = await getDocs(collection(firestore, "history"));
+    /*querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()['content']}`);
+    });*/
+
+    const historyData = querySnapshot.docs.map(doc => {
+        return {
+            id: doc.id,
+            content: doc.data().content,
+            date: doc.data().date,
+            sentiment: doc.data().sentiment,
+        };
+    });
+
+    return querySnapshot;
+}
