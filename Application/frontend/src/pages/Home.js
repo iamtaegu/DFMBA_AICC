@@ -1,7 +1,7 @@
 import Button from "../components/Button";
 import Header from "../components/Header";
 import {useContext, useEffect, useState} from "react";
-import {DiaryDispatchContext, DiaryStateContext} from "../App";
+import {DiaryDispatchContext, DiaryStateContext, GoogleLoginStateContext} from "../App";
 import {getMonthRangeByDate, getUserHistory} from "../util";
 import DiaryList from "../components/DiaryList";
 import GoogleLoginButton from "../components/login/GoogleLoginButton";
@@ -38,35 +38,12 @@ const Home = () => {
         setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth() - 1));
     };
 
-    const [showGoogleLogin, setShowGoogleLogin] = useState(true);
-    const onLogin = async (credential) => {
-        const decoded = jwtDecode(credential);
-
-        setShowGoogleLogin(false);
-
-        // onCreate(date, content, emotionId, fetchDataList);
-
-        try {
-            var userHistory = await getUserHistory(decoded.email);
-
-            userHistory.forEach( (doc) => {
-                console.log(`${doc.id} => ${doc.data()['content']}`);
-                onCreate(doc.data().date, doc.data().content, doc.data().sentiment, '');
-            });
-
-        } catch (error) {
-            console.error("Error getting user history: ", error);
-        }
-    };
-
     return (
         <div>
-           {showGoogleLogin && <GoogleLoginButton onLogin={onLogin} />}
            <Header
             title={headerTitle}
             leftChild={<Button text={"<"} onClick={onDecreaseMonth} />}
             rightChild={<Button text={">"} onClick={onIncreaseMonth} />}
-            onLogin={onLogin}
            />
            <DiaryList data={filteredData} />
         </div>

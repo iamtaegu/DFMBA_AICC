@@ -7,8 +7,10 @@ import emotion5 from "./img/emotion5.png"
 import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "./firebase-config.js";
 
-import {DiaryDispatchContext} from "./App";
-import {useContext} from "react";
+export interface AuthState {
+    showGoogleLogin: boolean;
+    setShowGoogleLogin: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 export interface DiaryEntry {
     id: number;

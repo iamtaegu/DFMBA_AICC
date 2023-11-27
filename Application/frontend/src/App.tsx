@@ -8,7 +8,7 @@ import New from "./pages/New";
 import Diary from "./pages/Diary.";
 import Edit from "./pages/Edit";
 
-import { DiaryEntry } from "./util";
+import { DiaryEntry, AuthState } from "./util";
 
 type DiaryAction =
     | { type: "INIT"; data: DiaryEntry[] }
@@ -45,6 +45,13 @@ function App() {
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0); // 리스트 아이템별 고유한 key를 부여하기 위함
 
+  const [showGoogleLogin, setShowGoogleLogin] = useState(true);
+
+  const authStateValue = {
+      showGoogleLogin,
+      setShowGoogleLogin,
+  };
+
   useEffect(() => {
       dispatch({
          type: "INIT",
@@ -53,9 +60,14 @@ function App() {
       setIsDataLoaded(true)
   }, []);
 
-  const onCreate = (date: Date, content: string, emotionId: number, fetchDataList: any) => {
+  const onInit = () => {
+      dispatch({
+          type: "INIT",
+          data: [],
+      });
+  }
 
-      console.log (date);
+  const onCreate = (date: Date, content: string, emotionId: number, fetchDataList: any) => {
 
       dispatch({
           type: "CREATE",
@@ -95,19 +107,22 @@ function App() {
         <DiaryStateContext.Provider value={data}>
             <DiaryDispatchContext.Provider
                 value={{
+                    onInit,
                     onCreate,
                     onUpdate,
                     onDelete}}
             >
-            <div className="App">
-                <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/new" element={<New/>}/>
-                    <Route path="/login" element={<New/>}/>
-                    <Route path="/diary/:id" element={<Diary/>}/>
-                    <Route path="/edit/:id" element={<Edit/>}/>
-                </Routes>
-            </div>
+                <GoogleLoginStateContext.Provider value={authStateValue}>
+                    <div className="App">
+                        <Routes>
+                            <Route path="/" element={<Home/>}/>
+                            <Route path="/new" element={<New/>}/>
+                            <Route path="/login" element={<New/>}/>
+                            <Route path="/diary/:id" element={<Diary/>}/>
+                            <Route path="/edit/:id" element={<Edit/>}/>
+                        </Routes>
+                    </div>
+                </GoogleLoginStateContext.Provider>
             </DiaryDispatchContext.Provider>
         </DiaryStateContext.Provider>
       );
@@ -121,8 +136,10 @@ function App() {
  *  2. Props로 일기 State 값을 전달
  *  3. DiaryStateContext.Provider 하위 컴포넌트는 Props Drilling 없이 useContext를 이용해 일기 State 사용이 가능
  */
+export const GoogleLoginStateContext = React.createContext<AuthState | undefined>(undefined);
 export const DiaryStateContext = React.createContext<DiaryEntry[]>([]);
 export const DiaryDispatchContext = React.createContext({
+    onInit: () => {},
     onCreate: (date: Date, content: string, emotionId: number, fetchDataList: any) => {},
     onUpdate: (
         targetId: number,

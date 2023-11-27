@@ -31,10 +31,19 @@ const New = () => {
         try {
             const resp = await axios.get('https://7yqpg0pc1k.execute-api.ap-northeast-2.amazonaws.com/dev/news_searchs' + param);
             fetchData = typeof resp.data === 'string' ? JSON.parse(resp.data) : resp.data;
+
+            console.log(typeof resp.data);
+            console.log(resp.data);
+
+            console.log(typeof fetchData);
+            console.log(fetchData);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
         let fetchDataList = fetchData.message.hits.hits;
+
+        console.log(typeof fetchData.message.hits.hits);
+        console.log(fetchData.message.hits.hits);
 
         const { date, content, emotionId } = data;
         onCreate(date, content, emotionId, fetchDataList);

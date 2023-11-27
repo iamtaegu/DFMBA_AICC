@@ -29,3 +29,9 @@
     width: 25%;
     justify-content: end;
 }
+
+.Header .login_flag {
+    width: 15%;
+    justify-content: end;
+    cursor: pointer;
+}
