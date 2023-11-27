@@ -42,7 +42,7 @@ const Header = ({ title, leftChild, rightChild }) => {
             <div className="header_left">{leftChild}</div>
             <div className="header_title">{title}</div>
             <div className="header_right">{rightChild}</div>
-            {showGoogleLogin && <GoogleLoginButton onLogin={onLogin} />}
+            {showGoogleLogin && <GoogleLoginButton className="login_flag" onLogin={onLogin} />}
             {!showGoogleLogin && <LogoutIcon className="login_flag" onClick={onLogout} />}
         </div>
     );

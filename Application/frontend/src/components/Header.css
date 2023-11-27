@@ -21,17 +21,17 @@
 }
 
 .Header .header_left {
-    width: 25%;
+    width: 20%;
     justify-content: start;
 }
 
 .Header .header_right {
-    width: 25%;
+    width: 20%;
     justify-content: end;
 }
 
 .Header .login_flag {
-    width: 15%;
+    width: 10%;
     justify-content: end;
     cursor: pointer;
 }

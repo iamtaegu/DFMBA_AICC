@@ -7,7 +7,7 @@ const GOOGLE_ID: string = process.env.REACT_APP_GOOGLE_ID as string;
 // @ts-ignore
 const GoogleLoginButton = ({onLogin}) => {
     return (
-        <>
+        <LoginIcon>
             <GoogleOAuthProvider clientId={GOOGLE_ID}>
                 <GoogleLogin
                     onSuccess={(res) => {
@@ -15,7 +15,7 @@ const GoogleLoginButton = ({onLogin}) => {
                     }}
                 />
             </GoogleOAuthProvider>
-        </>
+        </LoginIcon>
     );
 };
 
