@@ -13,18 +13,20 @@ const Header = ({ title, leftChild, rightChild }) => {
 
     const { onInit, onCreate } = useContext(DiaryDispatchContext);
     const authState = useContext(GoogleLoginStateContext);
-    const { showGoogleLogin, setShowGoogleLogin } = authState;
+    const { showGoogleLogin, setShowGoogleLogin, setGoogleLoginId } = authState;
     const onLogin = async (credential) => {
         const decoded = jwtDecode(credential);
 
         setShowGoogleLogin(false);
+        setGoogleLoginId(decoded.email);
 
         try {
             var userHistory = await getUserHistory(decoded.email);
 
+            console.log(userHistory);
+
             userHistory.forEach( (doc) => {
-                console.log(`${doc.id} => ${doc.data()['content']}`);
-                onCreate(doc.data().date, doc.data().content, doc.data().sentiment, '');
+                onCreate(doc.id, doc.date, doc.content, doc.emotionId, doc.fetchDataList);
             });
 
         } catch (error) {
@@ -33,7 +35,6 @@ const Header = ({ title, leftChild, rightChild }) => {
     };
 
     const onLogout = () => {
-        setShowGoogleLogin(true);
         onInit();
     }
 

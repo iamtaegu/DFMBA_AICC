@@ -8,7 +8,7 @@ import New from "./pages/New";
 import Diary from "./pages/Diary.";
 import Edit from "./pages/Edit";
 
-import { DiaryEntry, AuthState } from "./util";
+import {DiaryEntry, AuthState, setUserHistory} from "./util";
 
 type DiaryAction =
     | { type: "INIT"; data: DiaryEntry[] }
@@ -46,10 +46,13 @@ function App() {
   const idRef = useRef(0); // 리스트 아이템별 고유한 key를 부여하기 위함
 
   const [showGoogleLogin, setShowGoogleLogin] = useState(true);
+  const [googleLoginId, setGoogleLoginId] = useState("");
 
   const authStateValue = {
       showGoogleLogin,
       setShowGoogleLogin,
+      googleLoginId,
+      setGoogleLoginId,
   };
 
   useEffect(() => {
@@ -61,31 +64,39 @@ function App() {
   }, []);
 
   const onInit = () => {
+      setShowGoogleLogin(true);
+      setGoogleLoginId('');
       dispatch({
           type: "INIT",
           data: [],
       });
   }
 
-  const onCreate = (date: Date, content: string, emotionId: number, fetchDataList: any) => {
+  const onCreate = (docId: string, date: Date, content: string, emotionId: number, fetchDataList: any) => {
+
+      console.log(idRef.current);
+
+      const createData = {
+          id: idRef.current,
+          docId: docId,
+          date: new Date(date).getTime(),
+          content,
+          emotionId,
+          fetchDataList,
+      }
 
       dispatch({
           type: "CREATE",
-          data: {
-              id: idRef.current,
-              date: new Date(date).getTime(),
-              content,
-              emotionId,
-              fetchDataList,
-          },
+          data: createData,
       });
       idRef.current += 1;
   };
-  const onUpdate = (targetId: number, date: Date, content: string, emotionId: number, fetchDataList: any) => {
+  const onUpdate = (targetId: number, docId: string, date: Date, content: string, emotionId: number, fetchDataList: any) => {
         dispatch({
             type: "UPDATE",
             data: {
                 id: targetId,
+                docId: docId,
                 date: new Date(date).getTime(),
                 content,
                 emotionId,
@@ -93,7 +104,7 @@ function App() {
             },
         });
   };
-  const onDelete = (targetId: number) => {
+  const onDelete = (targetId: number, docId: string) => {
       dispatch({
           type: "DELETE",
           targetId,
@@ -140,14 +151,15 @@ export const GoogleLoginStateContext = React.createContext<AuthState | undefined
 export const DiaryStateContext = React.createContext<DiaryEntry[]>([]);
 export const DiaryDispatchContext = React.createContext({
     onInit: () => {},
-    onCreate: (date: Date, content: string, emotionId: number, fetchDataList: any) => {},
+    onCreate: (docId: string, date: Date, content: string, emotionId: number, fetchDataList: any) => {},
     onUpdate: (
         targetId: number,
+        docId: string,
         date: Date,
         content: string,
         emotionId: number,
         fetchDataList: any
     ) => {},
-    onDelete: (targetId: number) => {},
+    onDelete: (targetId: number, docId: string) => {},
 });
 export default App;

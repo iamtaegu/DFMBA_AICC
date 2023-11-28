@@ -10,7 +10,6 @@ import { jwtDecode } from "jwt-decode";
 const Home = () => {
 
     const data = useContext(DiaryStateContext);
-    const { onCreate } = useContext(DiaryDispatchContext);
 
     const [filteredData, setFilteredData] = useState([]);
     const [pivotDate, setPivotDate] = useState(new Date());

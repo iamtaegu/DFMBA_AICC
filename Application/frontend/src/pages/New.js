@@ -3,10 +3,10 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import Editor from "../components/Editor";
 import {useContext, useState} from "react";
-import {DiaryDispatchContext} from "../App";
+import {DiaryDispatchContext, GoogleLoginStateContext} from "../App";
 
 import axios from 'axios';
-import {getSentiment} from "../util";
+import {getSentiment, setUserHistory} from "../util";
 
 const New = () => {
     const navigate = useNavigate();
@@ -14,6 +14,8 @@ const New = () => {
     const goBack = () => {
         navigate(-1);
     };
+
+    const authState = useContext(GoogleLoginStateContext);
 
     const onSubmit = async (data) => {
 
@@ -32,21 +34,25 @@ const New = () => {
             const resp = await axios.get('https://7yqpg0pc1k.execute-api.ap-northeast-2.amazonaws.com/dev/news_searchs' + param);
             fetchData = typeof resp.data === 'string' ? JSON.parse(resp.data) : resp.data;
 
-            console.log(typeof resp.data);
-            console.log(resp.data);
-
-            console.log(typeof fetchData);
-            console.log(fetchData);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
         let fetchDataList = fetchData.message.hits.hits;
 
-        console.log(typeof fetchData.message.hits.hits);
-        console.log(fetchData.message.hits.hits);
-
         const { date, content, emotionId } = data;
-        onCreate(date, content, emotionId, fetchDataList);
+        const docId = new Date().getTime().toString();
+        onCreate(docId, date, content, emotionId, fetchDataList);
+
+        /* call firestore */
+        const docData = {
+            date: new Date().getTime(),
+            content,
+            emotionId,
+            fetchDataList,
+        }
+
+        await setUserHistory (docData, docId, authState.googleLoginId);
+
         navigate("/", { replace: true });
     };
 

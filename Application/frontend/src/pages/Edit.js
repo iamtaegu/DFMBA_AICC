@@ -7,7 +7,7 @@ import Button from "../components/Button";
 import Editor from "../components/Editor";
 
 import axios from 'axios';
-import {getSentiment} from "../util";
+import {deleteUserHistory, getSentiment, updateUserHistory} from "../util";
 
 const Edit = () => {
     const { id } = useParams();
@@ -18,9 +18,10 @@ const Edit = () => {
     const goBack = () => {
         navigate(-1);
     };
-    const onClickDelete = () => {
+    const onClickDelete = async () => {
         if (window.confirm("정말 삭제할까요 ? ")) {
-            onDelete(id);
+            await deleteUserHistory(data.docId);
+            onDelete(id, data.docId);
             navigate("/", { replace: true });
         }
     };
@@ -41,8 +42,17 @@ const Edit = () => {
             }
             let fetchDataList = fetchData.message.hits.hits;
 
-            const { date, content, emotionId } = data;
-            onUpdate(id, date, content, emotionId, fetchDataList);
+            const { docId, date, content, emotionId } = data;
+
+            /* call firestore */
+            const docData = {
+                date: new Date().getTime(),
+                content,
+                emotionId,
+                fetchDataList,
+            }
+            await updateUserHistory(docId, docData);
+            onUpdate(id, docId, date, content, emotionId, fetchDataList);
             navigate("/", { replace:true });
         }
     };

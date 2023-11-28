@@ -4,16 +4,20 @@ import emotion3 from "./img/emotion3.png"
 import emotion4 from "./img/emotion4.png"
 import emotion5 from "./img/emotion5.png"
 
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc, deleteDoc, updateDoc } from "firebase/firestore";
 import { firestore } from "./firebase-config.js";
 
 export interface AuthState {
     showGoogleLogin: boolean;
     setShowGoogleLogin: React.Dispatch<React.SetStateAction<boolean>>;
+    googleLoginId: string;
+    setGoogleLoginId: React.Dispatch<React.SetStateAction<string>>;
 }
+
 
 export interface DiaryEntry {
     id: number;
+    docId: string;
     date: number;
     content: string;
     emotionId: number;
@@ -118,18 +122,45 @@ export const getSentiment = (emotionId: number): string => {
 
 export const getUserHistory = async (mail: string) => {
     const querySnapshot = await getDocs(collection(firestore, "history"));
-    /*querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()['content']}`);
-    });*/
 
     const historyData = querySnapshot.docs.map(doc => {
         return {
             id: doc.id,
             content: doc.data().content,
             date: doc.data().date,
-            sentiment: doc.data().sentiment,
+            emotionId: doc.data().emotionId,
+            fetchDataList: doc.data().fetchDataList,
+            loginId: doc.data().loginId,
         };
-    });
+    }).filter(item => item.loginId === mail);
 
-    return querySnapshot;
+    return historyData;
+}
+
+export const setUserHistory = async (data: DiaryEntry, docId: string, loginId: string) => {
+
+    const docData = {
+        date: data.date,
+        content: data.content,
+        emotionId: data.emotionId,
+        fetchDataList: data.fetchDataList,
+        loginId: loginId,
+    }
+
+    await setDoc(doc(firestore, "history", docId), docData);
+}
+
+export const updateUserHistory = async (docId: string, data: DiaryEntry) => {
+    const docRef = doc(firestore, "history", docId);
+    await updateDoc(docRef, {
+        date: data.date,
+        content: data.content,
+        emotionId: data.emotionId,
+        fetchDataList: data.fetchDataList,
+    });
+}
+
+export const deleteUserHistory = async (docId: string) => {
+
+    await deleteDoc(doc(firestore, "history", docId));
 }
