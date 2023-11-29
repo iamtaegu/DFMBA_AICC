@@ -8,6 +8,15 @@
     justify-content: space-between;
 }
 
+.DiaryList .genAI_wrapper {
+    padding-left: 5px;
+    flex-grow: 1;
+}
+
+.DiaryList .genAI_wrapper button {
+    width: 100%;
+}
+
 .DiaryList .left_col select {
     margin-right: 10px;
     border: none;

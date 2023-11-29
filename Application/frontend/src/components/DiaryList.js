@@ -1,8 +1,10 @@
 import "./DiaryList.css";
 import Button from "./Button";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import DiaryItem from "./DiaryItem";
+import {GoogleLoginStateContext} from "../App";
+
 
 const sortOptionList = [
     {value:"latest", name:"최신순"},
@@ -12,7 +14,7 @@ const sortOptionList = [
 const DiaryList = ({ data }) => {
     const [sortType, setSortType] = useState("latest");
     const [sortedData, setSortedData] = useState([]);
-
+    const authState = useContext(GoogleLoginStateContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -29,11 +31,19 @@ const DiaryList = ({ data }) => {
     }, [data, sortType]);
 
     const onClickNew = () => {
-        navigate("/new");
+        if (authState.googleLoginId.length > 0) {
+            navigate("/new");
+        } else {
+            alert('로그인 이후에 이용해주세요.');
+        }
     };
 
     const onChangeSortType = (e) => {
       setSortType(e.target.value);
+    };
+
+    const onClickSvc = () => {
+        window.location.href = "https://www.naver.com";
     };
 
     return (
@@ -55,6 +65,13 @@ const DiaryList = ({ data }) => {
                       onClick={onClickNew}
                   />
               </div>
+              {!authState.showGoogleLogin && <div className="genAI_wrapper" >
+                  <Button
+                      type={"negative"}
+                      text={"GenAI 이용하기"}
+                      onClick={onClickSvc}
+                  />
+              </div> }
           </div>
           <div className="list_wrapper">
               {sortedData.map((it) => (
