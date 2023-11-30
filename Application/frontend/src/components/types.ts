@@ -22,3 +22,7 @@ export type SentimentTrendItem = {
 export type SentimentTrends = {
     message: SentimentTrends[];
 }
+
+export type XNameSignature = {
+    [key: string]: string;
+}

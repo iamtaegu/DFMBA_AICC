@@ -5,6 +5,7 @@ import { useGetSentimentTrendsQuery } from "../newsApi";
 
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
+import {XNameSignature} from "../../types";
 
 interface IProps {
     search: string;
@@ -21,6 +22,7 @@ export default function SentimentTrendChart({ search }: IProps) {
         );
     }
 
+    const xName: XNameSignature = {'positive':'긍정', 'neutral':'중립', 'negative':'부정'};
     const traces: Plotly.Data[] = [
         'positive', 'neutral', 'negative',
     ].map((x) => ({
@@ -28,7 +30,7 @@ export default function SentimentTrendChart({ search }: IProps) {
         y: data.message.map((el: any) => (el as any)[x]),
         type: "scatter",
         mode: "lines+markers",
-        name: x,
+        name: xName[x],
     }))
 
     return (
