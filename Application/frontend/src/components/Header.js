@@ -23,8 +23,6 @@ const Header = ({ title, leftChild, rightChild }) => {
         try {
             var userHistory = await getUserHistory(decoded.email);
 
-            console.log(userHistory);
-
             userHistory.forEach( (doc) => {
                 onCreate(doc.id, doc.date, doc.content, doc.emotionId, doc.fetchDataList);
             });
