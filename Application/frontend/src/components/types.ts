@@ -1,5 +1,6 @@
 export type SearchReqParams = {
     search: string;
+    date: string;
 }
 
 export type NewsTrendItem = {
@@ -25,4 +26,9 @@ export type SentimentTrends = {
 
 export type XNameSignature = {
     [key: string]: string;
+}
+
+export type IProps = {
+    search: string;
+    date: string;
 }

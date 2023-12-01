@@ -5,14 +5,10 @@ import { useGetSentimentTrendsQuery } from "../newsApi";
 
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
-import {XNameSignature} from "../../types";
+import { XNameSignature, IProps } from "../../types";
 
-interface IProps {
-    search: string;
-}
-
-export default function SentimentTrendChart({ search }: IProps) {
-    const { data, isLoading } = useGetSentimentTrendsQuery({search: search});
+export default function SentimentTrendChart({ search,date }: IProps) {
+    const { data, isLoading } = useGetSentimentTrendsQuery({search: search, date:date});
 
     if (isLoading || !data) {
         return (

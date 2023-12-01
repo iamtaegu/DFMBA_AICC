@@ -5,13 +5,10 @@ import { useGetNewsTrendsQuery } from "../newsApi";
 
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
+import {IProps} from "../../types";
 
-interface IProps {
-    search: string;
-}
-
-export default function NewsTrendChart({ search }: IProps) {
-    const { data, isLoading } = useGetNewsTrendsQuery({search: search});
+export default function NewsTrendChart({ search, date }: IProps) {
+    const { data, isLoading } = useGetNewsTrendsQuery({search: search, date: date});
 
     if (isLoading || !data) {
         return (
@@ -20,8 +17,6 @@ export default function NewsTrendChart({ search }: IProps) {
             </Box>
         );
     }
-
-    console.log(data);
 
     const trace: Plotly.Data = {
         x: data.message.map((el) => el.date),

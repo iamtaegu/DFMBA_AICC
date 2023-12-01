@@ -4,8 +4,9 @@ import NewsTrendChart from "./newsComponents/NewsTrendChart";
 import SentimentTrendChart from "./newsComponents/SentimentTrendChart";
 import {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
+import {type} from "os";
 
-export default function NewsTrendContent() {
+export default function NewsTrendContent(date: any) {
     const navigate = useNavigate();
     const { pathname, search } = useLocation();
 
@@ -36,8 +37,8 @@ export default function NewsTrendContent() {
                     }
                 }}
                 className="searchbar" placeholder="키워드를 입력하세요" />
-            <NewsTrendChart search={searchText} />
-            <SentimentTrendChart search={searchText} />
+            <NewsTrendChart search={searchText} date={date.date} />
+            <SentimentTrendChart search={searchText} date={date.date} />
         </div>
     );
 }

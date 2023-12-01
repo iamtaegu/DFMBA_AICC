@@ -1,13 +1,9 @@
 import Button from "../components/Button";
 import Header from "../components/Header";
 import {useContext, useEffect, useState} from "react";
-import {DiaryDispatchContext, DiaryStateContext, GoogleLoginStateContext} from "../App";
-import {getMonthRangeByDate, getUserHistory} from "../util";
+import {DiaryStateContext, GoogleLoginStateContext} from "../App";
+import {getMonthRangeByDate} from "../util";
 import DiaryList from "../components/DiaryList";
-import GoogleLoginButton from "../components/login/GoogleLoginButton";
-import { jwtDecode } from "jwt-decode";
-import NewsTrendChart from "../components/news/newsComponents/NewsTrendChart";
-import SentimentTrendChart from "../components/news/newsComponents/SentimentTrendChart";
 import NewsTrendContent from "../components/news/NewsTrendContent";
 
 const Home = () => {
@@ -49,7 +45,7 @@ const Home = () => {
             leftChild={<Button text={"<"} onClick={onDecreaseMonth} />}
             rightChild={<Button text={">"} onClick={onIncreaseMonth} />}
            />
-           { showGoogleLogin ? <NewsTrendContent /> : <DiaryList data={filteredData} /> }
+           { showGoogleLogin ? <NewsTrendContent date={`${pivotDate.getFullYear()}${pivotDate.getMonth() + 1}`} /> : <DiaryList data={filteredData} /> }
         </div>
     );
 };
