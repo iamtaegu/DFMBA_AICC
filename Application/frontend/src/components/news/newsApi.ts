@@ -11,12 +11,12 @@ export const newsApi = createApi({
     endpoints: (builder) => ({
         //query<response, request>
         getNewsTrends: builder.query<t.NewsTrends, t.SearchReqParams>({
-            query: ({ search, date }) => `news_trends?search=${search}&date=${date}`,
+            query: ({ search, date }) => `trends_aggs_date?title=${search}&date=${date}`,
         }),
         getSentimentTrends: builder.query<t.SentimentTrends, t.SearchReqParams>({
-            query: ({ search, date }) => `sentiment_trends?search=${search}&date=${date}`,
+            query: ({ search, date }) => `trends_aggs_date?title=${search}&date=${date}&sentiment=`,
         })
     }),
 });
 
-export const { useGetNewsTrendsQuery, useGetSentimentTrendsQuery } = newsApi;
+export const { useGetNewsTrendsQuery, useGetSentimentTrendsQuery} = newsApi;

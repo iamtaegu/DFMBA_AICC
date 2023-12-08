@@ -43,7 +43,7 @@ const DiaryList = ({ data }) => {
     };
 
     const onClickSvc = () => {
-        window.location.href = "https://www.naver.com";
+        window.location.href = "http://ec2-3-34-137-141.ap-northeast-2.compute.amazonaws.com/";
     };
 
     return (
