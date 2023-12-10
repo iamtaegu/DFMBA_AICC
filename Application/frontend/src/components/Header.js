@@ -9,7 +9,7 @@ import {DiaryDispatchContext, GoogleLoginStateContext} from "../App";
 import {jwtDecode} from "jwt-decode";
 import {getUserHistory} from "../util";
 
-const Header = ({ title, leftChild, rightChild }) => {
+const Header = ({ title, leftChild, rightChild, setPivotDate}) => {
 
     const { onInit, onCreate } = useContext(DiaryDispatchContext);
     const authState = useContext(GoogleLoginStateContext);
@@ -19,6 +19,7 @@ const Header = ({ title, leftChild, rightChild }) => {
 
         setShowGoogleLogin(false);
         setGoogleLoginId(decoded.email);
+        setPivotDate(new Date()); //로그인 이후 년월 설정
 
         try {
             var userHistory = await getUserHistory(decoded.email);

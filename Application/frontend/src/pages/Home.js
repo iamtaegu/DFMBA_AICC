@@ -2,7 +2,7 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import {useContext, useEffect, useState} from "react";
 import {DiaryStateContext, GoogleLoginStateContext} from "../App";
-import {getMonthRangeByDate} from "../util";
+import {getInitialDate, getMonthRangeByDate} from "../util";
 import DiaryList from "../components/DiaryList";
 import NewsTrendContent from "../components/news/NewsTrendContent";
 
@@ -13,7 +13,7 @@ const Home = () => {
     const { showGoogleLogin } = authState;
 
     const [filteredData, setFilteredData] = useState([]);
-    const [pivotDate, setPivotDate] = useState(new Date(2023, 7));
+    const [pivotDate, setPivotDate] = useState(getInitialDate(showGoogleLogin));
 
     const headerTitle = `${pivotDate.getFullYear()}년 
                          ${pivotDate.getMonth() + 1}월`;
@@ -44,6 +44,7 @@ const Home = () => {
             title={headerTitle}
             leftChild={<Button text={"<"} onClick={onDecreaseMonth} />}
             rightChild={<Button text={">"} onClick={onIncreaseMonth} />}
+            setPivotDate={setPivotDate}
            />
            { showGoogleLogin ? <NewsTrendContent date={`${pivotDate.getFullYear()}${pivotDate.getMonth() + 1}`} /> : <DiaryList data={filteredData} /> }
         </div>

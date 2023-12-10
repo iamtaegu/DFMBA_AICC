@@ -164,3 +164,13 @@ export const deleteUserHistory = async (docId: string) => {
 
     await deleteDoc(doc(firestore, "history", docId));
 }
+
+export const getInitialDate = (showGoogleLogin: boolean) => {
+    if (showGoogleLogin) {
+        // Set initial date to August 2023
+        return new Date(2023, 7);
+    } else {
+        // Set initial date to the current date
+        return new Date();
+    }
+};
