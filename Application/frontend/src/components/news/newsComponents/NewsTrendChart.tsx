@@ -26,7 +26,7 @@ export default function NewsTrendChart({ search, date }: IProps) {
     }
 
     return (
-        <div> {search} 수집 추이
+        <div> {date.substring(4)}월 {search} 수집 추이
             <Plot
                 data={[trace]}
                 layout={ {autosize: true} }

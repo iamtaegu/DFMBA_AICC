@@ -30,7 +30,7 @@ export default function SentimentTrendChart({ search,date }: IProps) {
     }))
 
     return (
-        <div> {search} 성향 분석 추이
+        <div> {date.substring(4)}월 {search} 성향 분석 추이
             <Plot
                 data={traces}
                 layout={ {autosize: true} }

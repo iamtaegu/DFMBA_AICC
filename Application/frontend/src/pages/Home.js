@@ -13,7 +13,7 @@ const Home = () => {
     const { showGoogleLogin } = authState;
 
     const [filteredData, setFilteredData] = useState([]);
-    const [pivotDate, setPivotDate] = useState(new Date());
+    const [pivotDate, setPivotDate] = useState(new Date(2023, 7));
 
     const headerTitle = `${pivotDate.getFullYear()}년 
                          ${pivotDate.getMonth() + 1}월`;
