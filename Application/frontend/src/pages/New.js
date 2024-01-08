@@ -17,6 +17,8 @@ const New = () => {
 
     const authState = useContext(GoogleLoginStateContext);
 
+    const target = 'https://7yqpg0pc1k.execute-api.ap-northeast-2.amazonaws.com/dev/news_searchs';
+
     const onSubmit = async (data) => {
 
         /**
@@ -31,7 +33,7 @@ const New = () => {
         param += param_sentiment.length > 0 ? "&sentiment=" + param_sentiment : "";
 
         try {
-            const resp = await axios.get('https://7yqpg0pc1k.execute-api.ap-northeast-2.amazonaws.com/dev/news_searchs' + param);
+            const resp = await axios.get(target + param);
             fetchData = typeof resp.data === 'string' ? JSON.parse(resp.data) : resp.data;
 
         } catch (error) {
