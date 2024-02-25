@@ -43,7 +43,8 @@ const DiaryList = ({ data }) => {
     };
 
     const onClickSvc = () => {
-        window.location.href = "http://ec2-3-34-137-141.ap-northeast-2.compute.amazonaws.com/";
+        alert('GenAI 서비스 점검중입니다');
+        //window.location.href = "http://ec2-3-34-137-141.ap-northeast-2.compute.amazonaws.com/";
     };
 
     return (
